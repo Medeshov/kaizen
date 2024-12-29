@@ -1,0 +1,66 @@
+@startuml
+skinparam activityFontSize 14
+skinparam noteFontSize 12
+
+title Kaizen Planning - User Flows
+
+|Customer|
+start
+:Visit Landing Page;
+
+if (Existing User?) then (yes)
+  :Login;
+else (no)
+  :Sign Up;
+  :Complete Onboarding;
+endif
+
+:Access Dashboard;
+
+if (Action?) then (Create Plan)
+  :Input Tasks and Goals;
+  :Categorize Tasks;
+  :Set Priorities;
+  :Review Plan;
+  
+  if (Approve?) then (no)
+    :Make Changes;
+    :Review Again;
+  else (yes)
+    if (Sync Calendar?) then (yes)
+      :Connect Google Calendar;
+      :Export Tasks;
+    else (no)
+      :Save Plan Locally;
+    endif
+  endif
+else (View Plans)
+  :Browse Existing Plans;
+  :Check Progress;
+  :Update if Needed;
+endif
+
+|Admin|
+:Access Admin Panel;
+
+if (Task Type?) then (User Management)
+  :View User List;
+  :Handle User Issues;
+else (System Tasks)
+  :Monitor Performance;
+  :Check Analytics;
+  :Update Content;
+endif
+
+:Generate Reports;
+:Maintain System;
+
+stop
+
+legend right
+  |Color|Type|
+  |<#lightblue>|User Actions|
+  |<#lightgreen>|System Actions|
+endlegend
+
+@enduml 

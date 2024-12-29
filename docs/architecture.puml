@@ -1,0 +1,107 @@
+@startuml Kaizen Planning SaaS Architecture
+
+' Styling
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+skinparam linetype ortho
+
+' Title
+title Kaizen Planning SaaS Architecture
+
+' Actors
+actor User
+actor "Google Calendar" as GCal
+
+' Main Components
+package "Frontend (Next.js)" {
+    component "Landing Page" as Landing
+    component "Dashboard" as Dashboard
+    
+    package "Step Forms" {
+        component "Materialize Thoughts" as Form1
+        component "Categorization" as Form2
+        component "Mission Filter" as Form3
+        component "Prioritization" as Form4
+    }
+    
+    component "Plan Preview" as Preview
+    component "Calendar Sync" as CalSync
+}
+
+package "Backend (Next.js API)" {
+    component "Authentication" as Auth
+    component "Task Management" as TaskMgmt
+    component "Calendar Integration" as CalInt
+    
+    package "Services" {
+        component "Task Segmentation" as TaskSeg
+        component "Prioritization Service" as PrioSrv
+        component "Calendar Sync Service" as CalSrv
+    }
+}
+
+database "MongoDB Atlas" {
+    component "Users" as Users
+    component "Tasks" as Tasks
+    component "Plans" as Plans
+}
+
+' External Services
+cloud "External Services" {
+    component "Google OAuth" as GOAuth
+    component "Google Calendar API" as GCalAPI
+}
+
+' Relationships and Flows
+User --> Landing
+Landing --> Dashboard
+Dashboard --> Form1
+Form1 --> Form2
+Form2 --> Form3
+Form3 --> Form4
+Form4 --> Preview
+Preview --> CalSync
+
+' Backend Connections
+Auth <--> GOAuth
+CalInt <--> GCalAPI
+TaskMgmt <--> TaskSeg
+TaskMgmt <--> PrioSrv
+CalInt <--> CalSrv
+
+' Database Connections
+TaskMgmt --> Tasks
+Auth --> Users
+Preview --> Plans
+
+' External Service Connections
+CalSync --> CalInt
+GCal <--> GCalAPI
+
+' Data Flow Notes
+note right of Form1
+  Users input raw thoughts
+  and initial tasks
+end note
+
+note right of Preview
+  Consolidated view of
+  organized tasks
+end note
+
+note right of CalSync
+  Syncs final plan with
+  Google Calendar
+end note
+
+' Legend
+legend right
+  |= Component |= Description |
+  |Frontend| Next.js with SSR/SSG|
+  |Backend| Next.js API Routes|
+  |Database| MongoDB Atlas|
+  |External| Google Calendar Integration|
+endlegend
+
+@enduml 

@@ -1,0 +1,192 @@
+# Kaizen Planning SaaS: AI Agent Rules and Workflows
+
+## Core Understanding
+
+### Project Context
+- **Type**: SaaS Application
+- **Purpose**: Implementation of Kaizen planning methodology
+- **Core Value**: Continuous improvement through structured planning
+- **Primary Integration**: Google Calendar
+
+
+### Architecture Components
+- Frontend: Next.js (SSR/SSG)
+- Backend: Next.js API Routes
+- Database: MongoDB Atlas
+- External Services: Google Calendar API, (Future: OpenAI API)
+
+---
+
+## Agent Roles and Responsibilities
+
+### 1. System Architect Role
+- **Trigger**: Questions about architecture, infrastructure, or system design
+- **Access Patterns**:
+  - Primary: `docs/architech.md`, `docs/architecture.puml`
+  - Secondary: Phase documentation files
+- **Responsibilities**:
+  - Infrastructure decisions
+  - System scalability considerations
+  - Integration patterns
+  - Security implementations
+
+### 2. Feature Developer Role
+- **Trigger**: Requests for implementing specific features
+- **Access Patterns**:
+  - Primary: `docs/phase*.md` files
+  - Secondary: `docs/project-def.md`, `docs/outline.md`
+- **Responsibilities**:
+  - Code implementation
+  - Component development
+  - Testing strategies
+  - Documentation updates
+
+### 3. Workflow Specialist Role
+- **Trigger**: Questions about user flows or methodology implementation
+- **Access Patterns**:
+  - Primary: `docs/overall-interface.md`, `docs/guide.md`
+  - Secondary: `docs/outline.md`
+- **Responsibilities**:
+  - User flow optimization
+  - Step-by-step form logic
+  - UX improvements
+  - Methodology alignment
+
+### 4. Integration Expert Role
+- **Trigger**: Questions about external service integration
+- **Access Patterns**:
+  - Primary: Phase 2 and 3 documentation
+  - Secondary: Architecture documentation
+- **Responsibilities**:
+  - Google Calendar API integration
+  - OAuth implementation
+  - API endpoint development
+  - Data synchronization
+
+---
+
+## Workflow Patterns
+
+### 1. Feature Implementation Flow
+```sequence
+1. Understand feature requirements from project docs
+2. Check existing implementation in codebase
+3. Identify dependencies and required components
+4. Implement in phases:
+   - Core functionality
+   - Integration points
+   - Testing
+   - Documentation
+```
+
+### 2. Bug Resolution Flow
+```sequence
+1. Analyze error context
+2. Check relevant documentation
+3. Review related components
+4. Propose fix strategy
+5. Implement and test solution
+```
+
+### 3. Architecture Decision Flow
+```sequence
+1. Identify architectural concern
+2. Review existing patterns in docs
+3. Consider scalability implications
+4. Propose and document solution
+5. Plan implementation phases
+```
+
+---
+
+## Response Patterns
+
+### 1. For Technical Questions
+- First check architecture docs
+- Reference specific implementation details from phase docs
+- Provide concrete examples from codebase
+- Include relevant code snippets
+
+### 2. For Methodology Questions
+- Reference `overall-interface.md`
+- Align with Kaizen principles
+- Provide step-by-step guidance
+- Include rationale for suggestions
+
+### 3. For Integration Questions
+- Check integration patterns in architecture
+- Reference specific API documentation
+- Provide implementation examples
+- Consider security implications
+
+---
+
+## Implementation Guidelines
+
+### 1. Code Structure
+- Follow Next.js conventions
+- Implement TypeScript strictly
+- Use Tailwind CSS for styling
+- Follow modular component design
+
+### 2. Database Operations
+- Use MongoDB best practices
+- Implement proper indexing
+- Handle data validation
+- Ensure proper error handling
+
+### 3. API Integration
+- Secure OAuth implementation
+- Proper error handling
+- Rate limiting consideration
+- Caching strategies
+
+### 4. Testing Requirements
+- Unit tests for components
+- Integration tests for APIs
+- E2E tests for critical flows
+- Performance testing
+
+---
+
+## Phase-Specific Rules
+
+### Phase 1: Foundation
+- Focus on core infrastructure
+- Establish base patterns
+- Set up development environment
+- Create essential pages
+
+### Phase 2: Core Features
+- Implement step-by-step forms
+- Develop task management
+- Create preview functionality
+- Set up Google Calendar sync
+
+### Phase 3: Deployment
+- Optimize for production
+- Implement monitoring
+- Set up analytics
+- Prepare for scaling
+
+---
+
+## Error Handling Patterns
+
+### 1. User Input Errors
+- Validate early
+- Provide clear feedback
+- Maintain form state
+- Log validation failures
+
+### 2. API Errors
+- Implement retry logic
+- Handle timeouts gracefully
+- Provide user feedback
+- Log error details
+
+### 3. Integration Errors
+- Handle OAuth failures
+- Manage API limits
+- Implement fallbacks
+- Monitor integration health 
